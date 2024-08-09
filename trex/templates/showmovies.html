@@ -1,0 +1,432 @@
+{% load static %}
+<!doctype html>
+<html lang="zxx">
+<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>T-REX</title>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<link rel="stylesheet" href="{% static 'css/style-starter.css' %}">
+	<link href="//fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+	<script src="{% static 'jquery.min.js' %}"></script>
+	<!-- <script src="{% static 'addwatchlist.js' %}"></script> -->
+    <style>
+        body {
+    background:linear-gradient(90deg, rgba(255,0,0,1) 18%, rgba(26,37,128,1) 57%, rgba(0,9,255,1) 99%, rgba(0,52,255,1) 100%, rgba(255,0,0,1) 100%);
+}
+		.zzzz{height: 120px; width: 99%;}
+
+        .movie-detail {
+            margin-top: 10100px;
+			text-align: left;
+            max-width: 1600px;
+            max-height: 100000px;
+            margin: 0px;
+            padding: 20px;
+			
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(14, 14, 14, 0.2);
+			
+        }
+
+        .movie-header {
+            text-align: left;
+            max-width: 1000px;
+        }
+
+        .movie-header h1 {
+            font-size: 24px;
+        }
+
+        .movie-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 0px;
+			margin-top: 10px;
+            max-width: 1000px;
+        }
+
+        .movie-description {
+            flex: 1;
+            margin-right: 20px;
+			margin-top: 20px;
+        }
+
+        .movie-description h3 {
+            font-size: 18px;
+        }
+
+        .movie-info {
+            flex: 1;
+        }
+
+        .movie-info h3 {
+            font-size: 18px;
+			
+        }
+
+        .movie-media {
+            margin-top: 20px;
+        }
+
+        .movie-video iframe {
+            width: 100%;
+            height: 315px;
+        }
+
+        .movie-image img {
+            max-width: 100%;
+            height: auto;
+        }
+		.image-container {
+			position: relative;
+			display: inline-block;
+		}
+		
+		.play-icon {
+			
+			position: absolute;
+			margin-top:-300px;
+			margin-left:730px;
+			transform: translate(-30%, -0%);
+			background-color: rgb(86, 148, 202);
+			
+			border-radius:100px;
+			padding: -30px;
+			color: rgb(0, 0, 0);
+			font-size:80px;
+			cursor: pointer;
+		}
+
+    </style>
+</head>
+<body>
+	
+	
+    <header id="site-header" class="w3l-header fixed-top" style="background:linear-gradient(90deg, rgba(255,0,0,1) 18%, rgba(26,37,128,1) 57%, rgba(0,9,255,1) 99%, rgba(0,52,255,1) 100%, rgba(255,0,0,1) 100%);">
+		<nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
+			<div class="container">
+				<h1><a class="navbar-brand" href="{% url 'index' user.id %}"><span aria-hidden="true"></span>T-REX</a></h1>
+				<a class="navbar-brand" href="{% url 'index' user.id %}">
+					<img src="{% static 'images/360_F_166431112_KgdHW9DWPMEQHr657m6hLu1Wqn7NbsBm.jpg' %}" alt="Your logo" title="logo" style="margin-right:1200px; height:50px; width: 50px;" />
+				</a> 
+				<button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="fa icon-expand fa-bars"></span>
+					<span class="fa icon-close fa-times"></span>
+				</button>
+
+				
+
+				<div class="mobile-position">
+					<nav class="navigation">
+						<div class="theme-switch-wrapper">
+							<label class="theme-switch" for="checkbox">
+								<input type="checkbox" id="checkbox">
+								<div class="mode-container">
+									<i class="gg-sun"></i>
+									<i class="gg-moon"></i>
+								</div>
+							</label>
+						</div>
+					</nav>
+				</div>
+
+			</div>
+		</nav>
+	</header>
+	
+		<div class="movie_data" style="font-family: Arial, sans-serif;  margin-top: 80px; color: rgb(18, 17, 17);">
+
+		
+		    <div style="position: absolute;top: 0;left: 0;width: 300px;padding: 20px; margin-top:70px; margin-left: 80px;margin-bottom:25px;">
+				{% csrf_token %}
+				<div class="movie-header" >
+					<title>{{ movie.Title }}</title>
+					<h1 style="font-size: 30px; color: #070707; font-weight: bolder;" id="titlehtml">{{ movie.Title }}</h1>
+				</div>
+				<div class="movie-content">
+					<div class="movie-description">
+						<h3 class="movie-info"> {{ movie.Description }}</h3><br>
+						<h3 class="movie-info"> {{ movie.Created }}</h3><br>
+						<h3 class="movie-info">  {{ movie.Rate }}</h3><br>
+						<form method="POST" action="{% url 'addwatchlist' %}">
+							{% for m in messages %}
+							<div class="message {% if m.tags %}{{ m.tags }}{% endif %}">
+								{{ m }}
+							</div>
+						    {% endfor %}
+							{% csrf_token %}
+							<input type="hidden" name="movie_id" value="{{ movie.id }}">
+							<input type="hidden" name="user_id" value="{{ user.id }}">
+						<button type="submit" id="watchlistbtn" class="btn" data-movie-id="{{ movie.id }}" style="border-radius: 10%; list-style: none; margin-top: 30px;  background-color: #2d0edf; color: rgb(15, 15, 15); font-weight: bold; font-size: 16px;  margin-top: 10px; margin-left: 10px; padding: 5px 15px;">+</button>
+							<p>watchlist</p>
+						</form>
+						
+
+					</div>
+				</div>
+			</div>
+
+			<div  class="movie-media">
+				<div  class="movie-media">
+					<a href="{% url 'video' movie.id user.id %}" >
+						<figure class="zzzz">
+							<img class="img-fluid"  src="{{ movie.Image.url }}" alt="" style="margin-left: 600px; height: 500px; width:300px;" >
+							<div class="play-icon"><span class="fa fa-play-circle"></span> </div>
+						</figure>
+						
+					</a>
+				</div>
+			</div>
+			
+		</div>
+	
+</body>
+</html>
+
+
+
+<script src="{% static 'js/jquery-1.9.1.min.js' %}"></script>
+  <script src="{% static 'js/easyResponsiveTabs.js' %}"></script>
+  <script type="text/javascript">
+
+$(document).ready(function() {
+		$("#watchlistbtn").click(function() {
+			var movieId = $(this).data("movie-id");
+
+			$.ajax({
+				type: "POST",
+				url: "addwatchlist",  // Update with your actual URL
+				data: {
+					'movie_id': movieId,
+					'csrfmiddlewaretoken': '{{ csrf_token }}'  // Include CSRF token for security
+				},
+				success: function(response) {
+					// Handle the response as needed (e.g., show a success message)
+					alert("Movie added to watchlist!");
+				},
+				error: function(error) {
+					// Handle errors
+					console.error('Error adding movie to watchlist:', error);
+				}
+			});
+		});
+	});
+
+    $(document).ready(function () {
+      //Horizontal Tab
+      $('#parentHorizontalTab').easyResponsiveTabs({
+        type: 'default', //Types: default, vertical, accordion
+        width: 'auto', //auto or any width like 600px
+        fit: true, // 100% fit in a container
+        tabidentify: 'hor_1', // The tab groups identifier
+        activate: function (event) { // Callback function if tab is switched
+          var $tab = $(this);
+          var $info = $('#nested-tabInfo');
+          var $name = $('span', $info);
+          $name.text($tab.text());
+          $info.show();
+        }
+      });
+    });
+  </script>
+<!-- //responsive tabs -->
+<!--/theme-change-->
+<script src="{% static 'js/theme-change.js' %}"></script>
+<!-- //theme-change-->
+<script src="{% static 'js/owl.carousel.js' %}"></script>
+<!-- script for banner slider-->
+<script>
+	$(document).ready(function () {
+		$('.owl-one').owlCarousel({
+			stagePadding:280,
+			loop: true,
+			margin: 20,
+			nav: true,
+			responsiveClass: true,
+			autoplay: true,
+			autoplayTimeout: 5000,
+			autoplaySpeed: 1000,
+			autoplayHoverPause: false,
+			responsive: {
+				0: {
+					items: 1,
+					stagePadding:40,
+					nav: false
+				},
+				480: {
+					items: 1,
+					stagePadding:60,
+					nav: true
+				},
+				667: {
+					items: 1,
+					stagePadding:80,
+					nav: true
+				},
+				1000: {
+					items: 1,
+					nav: true
+				}
+			}
+		})
+	})
+</script>
+<!-- //script -->
+<script>
+	$(document).ready(function () {
+		$('.owl-three').owlCarousel({
+			loop: true,
+			margin: 20,
+			nav: false,
+			responsiveClass: true,
+			autoplay: true,
+			autoplayTimeout: 5000,
+			autoplaySpeed: 1000,
+			autoplayHoverPause: false,
+			responsive: {
+				0: {
+					items: 2,
+					nav: false
+				},
+				480: {
+					items: 2,
+					nav: true
+				},
+				667: {
+					items: 3,
+					nav: true
+				},
+				1000: {
+					items: 5,
+					nav: true
+				}
+			}
+		})
+	})
+</script>
+<!-- //script -->
+<!-- /mid-script -->
+<script>
+	$(document).ready(function () {
+		$('.owl-mid').owlCarousel({
+			loop: true,
+			margin: 0,
+			nav: false,
+			responsiveClass: true,
+			autoplay: true,
+			autoplayTimeout: 5000,
+			autoplaySpeed: 1000,
+			autoplayHoverPause: false,
+			responsive: {
+				0: {
+					items: 1,
+					nav: false
+				},
+				480: {
+					items: 1,
+					nav: false
+				},
+				667: {
+					items: 1,
+					nav: true
+				},
+				1000: {
+					items: 1,
+					nav: true
+				}
+			}
+		})
+	})
+</script>
+<!-- //mid-script -->
+
+<!-- script for owlcarousel -->
+<!-- Template JavaScript -->
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script>
+	$(document).ready(function () {
+		$('.popup-with-zoom-anim').magnificPopup({
+			type: 'inline',
+
+			fixedContentPos: false,
+			fixedBgPos: true,
+
+			overflowY: 'auto',
+
+			closeBtnInside: true,
+			preloader: false,
+
+			midClick: true,
+			removalDelay: 300,
+			mainClass: 'my-mfp-zoom-in'
+		});
+
+		$('.popup-with-move-anim').magnificPopup({
+			type: 'inline',
+
+			fixedContentPos: false,
+			fixedBgPos: true,
+
+			overflowY: 'auto',
+
+			closeBtnInside: true,
+			preloader: false,
+
+			midClick: true,
+			removalDelay: 300,
+			mainClass: 'my-mfp-slide-bottom'
+		});
+	});
+</script>
+<!--//-->
+<!-- disable body scroll which navbar is in active -->
+<script>
+	$(function () {
+		$('.navbar-toggler').click(function () {
+			$('body').toggleClass('noscroll');
+		})
+	});
+</script>
+<!-- disable body scroll which navbar is in active -->
+
+<!--/MENU-JS-->
+<script>
+	$(window).on("scroll", function () {
+		var scroll = $(window).scrollTop();
+
+		if (scroll >= 80) {
+			$("#site-header").addClass("nav-fixed");
+		} else {
+			$("#site-header").removeClass("nav-fixed");
+		}
+	});
+
+	//Main navigation Active Class Add Remove
+	$(".navbar-toggler").on("click", function () {
+		$("header").toggleClass("active");
+	});
+	$(document).on("ready", function () {
+		if ($(window).width() > 991) {
+			$("header").removeClass("active");
+		}
+		$(window).on("resize", function () {
+			if ($(window).width() > 991) {
+				$("header").removeClass("active");
+			}
+		});
+	});
+</script>
+<!--//MENU-JS-->
+
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+
+
+
+
+

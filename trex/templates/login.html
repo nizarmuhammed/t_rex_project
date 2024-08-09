@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T REX-log in</title>
+    <link rel="stylesheet" href="{% static 'css/style-starter.css' %}">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+    
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;}
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background:url("{% static 'images/bg.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    animation: animateBg 5s linear infinite;
+    
+}
+@keyframes animateBg {
+    100%{
+        filter:hue-rotate(360deg);
+    }
+}
+
+.login-box{
+    position: relative;
+    width:400px;
+    height:450px;
+    background: transparent; 
+    border: 2px solid rgba(255,255,255,.5);
+    border-radius: 20px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(15px);
+}
+h2{
+    font-size: 2em;
+    font-family: 'Playfair Display', serif;
+    color:#fff;
+    text-align: center;
+}
+.input-box{
+       position: relative;
+       width:310px;
+       margin:30px 0;
+       border-bottom:2px solid #fff;
+}
+.input-box label{
+       position: absolute;
+       top:50%;
+       left:5px;
+       transform:translateY(-50%);
+       font-size: 1em;
+       color:#fff;
+       pointer-events: none;
+       transition: .5s;
+}
+.input-box input:focus~label,
+.input-box input:valid~label{
+    top:-5px;
+}
+
+.input-box input{
+    width:100%;
+    height: 50px;
+    background: transparent;
+    border:none;
+    outline: none;
+    font-size: 1em;
+    color:#fff;
+    padding: 0 35px 0 5px;
+}
+/* button{
+    width: 100%;
+    height: 40px;
+    background: #fff;
+    border:none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #000;
+    font-weight: 600;
+} */
+.bn632-hover {
+  width: 160px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align:center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  /* moz-transition: all .4s ease-in-out; */
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.bn632-hover:hover {
+  background-position: 100% 0;
+  /* moz-transition: all .4s ease-in-out; */
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.bn632-hover:focus {
+  outline: none;
+}
+
+.bn632-hover.bn28 {
+  background-image: linear-gradient(
+    to right,
+    #eb3941,
+    #f15e64,
+    #e14e53,
+    #e2373f
+  );
+  box-shadow: 0 5px 15px rgba(242, 97, 103, 0.4);
+}
+
+.register-link{
+    font-size: .9em;
+    color:#fff;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+
+.register-link p a {
+    color:#fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+.register-link p a:hover {
+    text-decoration: underline;
+}
+
+    
+
+</style>
+
+    
+</head>
+
+<body>
+   
+    <section>
+        <header id="site-header" class="w3l-header fixed-top">
+            <!--/nav-->
+            <nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
+                <div class="container">
+                    <h1><a class="navbar-brand" href=""><span class=""
+                                aria-hidden="true"></span>
+                            T-REX</a></h1>
+                    <!-- if logo is image enable this  --> 
+                            <a class="navbar-brand" href="">
+                                <img src="{% static 'images/360_F_166431112_KgdHW9DWPMEQHr657m6hLu1Wqn7NbsBm.jpg' %}" alt="Your logo" title="Your logo" style=" height:50px; width: 50px;" />
+                            </a> 
+                      
+                </div>
+            </nav>
+        </header>
+    <div class="login-box">
+        <form action="" method="POST">
+            {% for m in messages %}
+            {{m}}
+            {% endfor %}
+            {% csrf_token %}
+            <h2>LOG IN</h2>
+            <div class="input-box">
+                <span class="icon">
+                    <icon-icon name="mail"></icon-icon>
+                </span>
+                <input type="text" name="email" id=""><label>Email</label>
+            </div>
+            <div class="input-box">
+                <span class="icon">
+                    <icon-icon name="lock-closed"></icon-icon>
+                </span>
+                <input type="password" name="password1" id=""><label>Password</label>
+            </div>
+            <button class="bn632-hover bn28" type="submit">LOGIN</button>
+            <div class="register-link">
+                <p>Don,t have an account.? <a href="{% url 'signup' %}">Register</a></p>
+            </div>
+
+        </form>
+    </div>
+    </section>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

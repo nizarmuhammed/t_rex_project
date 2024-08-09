@@ -1,0 +1,319 @@
+{% load static %}
+<!doctype html>
+<html lang="zxx">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>T-REX</title>
+	<!-- Template CSS -->
+	<link rel="stylesheet" href="{% static 'css/style-starter.css' %}">
+	<!-- Template CSS -->
+	<link href="//fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,600&display=swap"
+		rel="stylesheet">
+	<!-- Template CSS -->
+	<style>
+		body {
+		   background:linear-gradient(90deg, rgba(255,0,0,1) 18%, rgba(26,37,128,1) 57%, rgba(0,9,255,1) 99%, rgba(0,52,255,1) 100%, rgba(255,0,0,1) 100%);
+}
+   </style>
+</head>
+
+<body>
+		<!-- header -->
+		<header id="site-header" class="w3l-header fixed-top" style="background:linear-gradient(90deg, rgba(255,0,0,1) 18%, rgba(26,37,128,1) 57%, rgba(0,9,255,1) 99%, rgba(0,52,255,1) 100%, rgba(255,0,0,1) 100%);" >
+			<!--/nav-->
+			<nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
+				<div class="container">
+					<h1><a style="font-weight: bold;" class="navbar-brand" href="{% url 'index' user.id %}"><span aria-hidden="true"></span>T-REX</a></h1>
+					<!-- if logo is image enable this -->  
+                    <a class="navbar-brand" href="#index.html">
+                        <img src="{% static 'images/360_F_166431112_KgdHW9DWPMEQHr657m6hLu1Wqn7NbsBm.jpg' %}" alt="Your logo" title="Your logo" style="height:50px; width: 50px;" />
+                    </a> 
+					<button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+						data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<!-- <span class="navbar-toggler-icon"></span> -->
+						<span class="fa icon-expand fa-bars"></span>
+						<span class="fa icon-close fa-times"></span>
+					</button>
+	
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item active">
+								<a class="nav-link" style="font-size: larger; font-weight: bold;" href="{% url 'index' user.id %}">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" style="font-size: larger; font-weight: bold;" href="{% url 'about' user.id %}">About</a>
+							</li>
+							<li class="nav-item">
+									<a class="nav-link" style="font-size: larger; font-weight: bold;" href="{% url 'genre' user.id %}">Genre</a>
+								</li>
+
+							<li class="nav-item">
+								<a class="nav-link" style="font-size: larger; font-weight: bold;" href="{% url 'contact' user.id %}">Contact</a>
+							</li>
+							<li class="nav-item">
+							</li>
+						</ul>
+	
+						
+	
+	
+					</div>
+					<!-- toggle switch for light and dark theme -->
+					<div class="mobile-position">
+						<nav class="navigation">
+							<div class="theme-switch-wrapper">
+								<label class="theme-switch" for="checkbox">
+									<input type="checkbox" id="checkbox">
+									<div class="mode-container">
+										<i class="gg-sun"></i>
+										<i class="gg-moon"></i>
+									</div>
+								</label>
+							</div>
+						</nav>
+					</div>
+					<!-- //toggle switch for light and dark theme -->
+				</div>
+			</nav>
+			<!--//nav-->
+		</header>
+		<!-- //header -->
+		<!--/breadcrumbs -->
+	<div class="w3l-breadcrumbs">
+		<nav id="breadcrumbs" class="breadcrumbs">
+			<div class="container page-wrapper" style="font-size: larger; font-weight: bold;">
+			<a href="{% url 'index' user.id %}" style="font-size: larger; font-weight: bold;">Home</a> » <span class="breadcrumb_last" aria-current="page">Contact</span>
+			</div>
+		</nav>
+	</div>
+ <!--//breadcrumbs -->
+	  <!-- contact1 -->
+	  <section class="w3l-contact-1">
+		<div class="contacts-9 py-5">
+		  <div class="container py-lg-4">
+			<div class="headerhny-title text-center">
+				<h4 class="sub-title text-center">Contact us</h4>
+				<h3 class="hny-title mb-0">Leave a Message</h3>
+				<p class="hny-title mb-lg-5 mb-4"> Feel free to contact us. If you have any question regarding our services.</p>
+			</div>
+			<div class="contact-view mt-lg-5 mt-4">
+			  <div class="conhny-form-section">
+				<form action="https://sendmail.w3layouts.com/submitForm" method="post" class="formhny-sec">
+						<div class="form-grids">
+							<div class="form-input">
+								<input type="text" name="w3lName" id="w3lName" placeholder="Enter your name *" required="" />
+							</div>
+							<div class="form-input">
+								<input type="text" name="w3lSubject" id="w3lSubject" placeholder="Enter subject " required />
+							</div>
+							<div class="form-input">
+								<input type="email" name="w3lSender" id="w3lSender" placeholder="Enter your email *"
+									required />
+							</div>
+							<div class="form-input">
+								<input type="text" name="w3lPhone" id="w3lPhone" placeholder="Enter your Phone Number *"
+									required />
+							</div>
+						</div>
+						<div class="form-input mt-4">
+							<textarea name="w3lMessage" id="w3lMessage" placeholder="Type your query here"
+								required=""></textarea>
+						</div>
+						<div class="submithny text-right mt-4">
+							<button class="btn read-button">Submit Message</button>
+						</div>
+					</form>
+			  </div>
+
+			  <div class="d-grid contact-addres-inf mt-5 pt-lg-4">
+				<div class="contact-info-left d-grid">
+					<div class="contact-info">
+						<div class="icon">
+							<span class="fa fa-location-arrow" aria-hidden="true"></span>
+						</div>
+						<div class="contact-details">
+							<h4>Address:</h4>
+							<p>G-TEC Computer Education KannurX</p>
+						</div>
+					</div>
+					<div class="contact-info">
+						<div class="icon">
+							<span class="fa fa-phone" aria-hidden="true"></span>
+						</div>
+						<div class="contact-details">
+							<h4>Phone:</h4>
+							<p><a href="tel:+9658471320">+919876543210</a></p>
+							<p><a href="tel:+9128734650">+911234567890</a></p>
+						</div>
+					</div>
+					<div class="contact-info">
+						<div class="icon">
+							<span class="fa fa-envelope-open-o" aria-hidden="true"></span>
+						</div>
+						<div class="contact-details">
+							<h4>Mail:</h4>
+							<p><a href="xavielobrien@gmail.com" class="email">trex.gtec@gmail.com</a></p>
+							<p><a href="xavielobrien@gmail.com" class="email">ethanhunt.gtec@gmail.com</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		  </div>
+		</div>
+	  </section>
+	  <!-- /contact1 -->
+	<!-- footer-66 -->
+	<footer class="w3l-footer">
+		<section class="footer-inner-main">
+			<div class="footer-hny-grids py-5">
+				<div class="container py-lg-4">
+					<div class="text-txt">
+						<div class="right-side">
+							<div class="row footer-about">
+								<div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
+									<a href="articles.html"><img class="img-fluid" src="{% static 'images/aa1.jpg' %}"
+											alt=""></a>
+								</div>
+								<div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
+									<a href="articles.html"><img class="img-fluid" src="{% static 'images/aa5.jpg' %}"
+											alt=""></a>
+								</div>
+								<div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
+									<a href="articles.html"><img class="img-fluid" src="{% static 'images/aa6.jpg' %}"
+											alt=""></a>
+								</div>
+								<div class="col-md-3 col-6 footer-img mb-lg-0 mb-4">
+									<a href="articles.html"><img class="img-fluid" src="{% static 'images/aa12.jpg' %}"
+											alt=""></a>
+								</div>
+							</div>
+							<div class="row footer-links">
+
+
+								<div class="col-md-3 col-sm-6 sub-two-right mt-5">
+									<h6>Movies</h6>
+									<ul>
+										<li><a href="#">Movies</a></li>
+<!--										<li><a href="#">Videos</a></li>-->
+<!--										<li><a href="#">English Movies</a></li>-->
+<!--										<li><a href="#">Tailor</a></li>-->
+										<li><a href="#">Upcoming Movies</a></li>
+										<li><a href="contact.html">Contact Us</a></li>
+									</ul>
+								</div>
+								<div class="col-md-3 col-sm-6 sub-two-right mt-5">
+									<h6>Information</h6>
+									<ul>
+										<li><a href="index.html">Home</a> </li>
+										<li><a href="about.html">About</a> </li>
+<!--										<li><a href="#">Tv Series</a> </li>-->
+<!--										<li><a href="#">Blogs</a> </li>-->
+<!--										<li><a href="#">Login</a></li>-->
+										<li><a href="contact.html">Contact</a></li>
+									</ul>
+								</div>
+<!--								<div class="col-md-3 col-sm-6 sub-two-right mt-5">-->
+<!--									<h6>Locations</h6>-->
+<!--									<ul>-->
+<!--										<li><a href="genre.html">Asia</a></li>-->
+<!--										<li><a href="genre.html">France</a></li>-->
+<!--										<li><a href="genre.html">Taiwan</a></li>-->
+<!--										<li><a href="genre.html">United States</a></li>-->
+<!--										<li><a href="genre.html">Korea</a></li>-->
+<!--										<li><a href="genre.html">United Kingdom</a></li>-->
+<!--									</ul>-->
+<!--								</div>-->
+								<div class="col-md-3 col-sm-6 sub-two-right mt-5">
+									<h6>Newsletter</h6>
+									<form action="#" class="subscribe mb-3" method="post">
+										<input type="email" name="email" placeholder="Your Email Address" required="">
+										<button><span class="fa fa-envelope-o"></span></button>
+									</form>
+									<p>Enter your email and receive the latest news, updates and special offers from us.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			<button onclick="topFunction()" id="movetop" title="Go to top">
+				<span class="fa fa-arrow-up" aria-hidden="true"></span>
+			</button>
+			<script>
+				// When the user scrolls down 20px from the top of the document, show the button
+				window.onscroll = function () {
+					scrollFunction()
+				};
+
+				function scrollFunction() {
+					if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+						document.getElementById("movetop").style.display = "block";
+					} else {
+						document.getElementById("movetop").style.display = "none";
+					}
+				}
+
+				// When the user clicks on the button, scroll to the top of the document
+				function topFunction() {
+					document.body.scrollTop = 0;
+					document.documentElement.scrollTop = 0;
+				}
+			</script>
+			<!-- /move top -->
+
+		</section>
+	</footer>
+	<!--//footer-66 -->
+</body>
+
+</html>
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<!-- Template JavaScript -->
+<!--/theme-change-->
+<script src="{% static 'js/theme-change.js' %}"></script>
+<!-- //theme-change-->
+<!-- disable body scroll which navbar is in active -->
+<script>
+	$(function () {
+		$('.navbar-toggler').click(function () {
+			$('body').toggleClass('noscroll');
+		})
+	});
+</script>
+<!-- disable body scroll which navbar is in active -->
+<!--/MENU-JS-->
+<script>
+	$(window).on("scroll", function () {
+		var scroll = $(window).scrollTop();
+
+		if (scroll >= 80) {
+			$("#site-header").addClass("nav-fixed");
+		} else {
+			$("#site-header").removeClass("nav-fixed");
+		}
+	});
+
+	//Main navigation Active Class Add Remove
+	$(".navbar-toggler").on("click", function () {
+		$("header").toggleClass("active");
+	});
+	$(document).on("ready", function () {
+		if ($(window).width() > 991) {
+			$("header").removeClass("active");
+		}
+		$(window).on("resize", function () {
+			if ($(window).width() > 991) {
+				$("header").removeClass("active");
+			}
+		});
+	});
+</script>
+<!--//MENU-JS-->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
